@@ -1,0 +1,39 @@
+{
+  "sheetsById": {
+    "R3F UI": {
+      "staticOverrides": {
+        "byObject": {
+          "Editor": {
+            "viewport": {
+              "showOverlayIcons": false,
+              "showAxes": true,
+              "shading": "wireframe"
+            },
+            "transformControls": {
+              "space": "local"
+            }
+          },
+          "Editor Camera snapshot #1": {
+            "transform": {
+              "position": {
+                "x": 39.94502131161801,
+                "y": 39.945021311618014,
+                "z": 2.44592712455729e-15
+              },
+              "target": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitionVersion": "0.4.0",
+  "revisionHistory": [
+    "tBihhukM-Xh5y3lz",
+    "szAjYKq2Xwog-hIF"
+  ]
+}

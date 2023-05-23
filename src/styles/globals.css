@@ -25,3 +25,8 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.rotation{
+  transform: rotateY(120deg)skewY(10deg);
+  left: 25px;
+}

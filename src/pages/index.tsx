@@ -1,118 +1,107 @@
-import Image from 'next/image'
 import { Inter } from 'next/font/google'
+import Header from '@/components/layout/Header'
+import { Canvas } from '@react-three/fiber'
+import { useEffect, useRef, useState } from 'react'
+import { getProject, val } from '@theatre/core'
+import studio from '@theatre/studio'
+import extension from '@theatre/r3f/dist/extension'
+import { editable as e, SheetProvider, useCurrentSheet } from '@theatre/r3f'
+import theatre from '@/theatre'
+import demoProjectState from '@/assets/DemoProject.theatre-project-state1.json'
+import {
+  Scroll,
+  ScrollControls,
+  useScroll,
+} from '@react-three/drei'
+import {
+  EffectComposer,
+  Bloom,
+  Glitch,
+  Noise,
+} from '@react-three/postprocessing'
+import { BlendFunction } from 'postprocessing'
+import { TrackedTypedHeading } from '@/components/TrackedTypedHeading'
+import Scene from '@/components/Scene'
 
 const inter = Inter({ subsets: ['latin'] })
 
+// if (
+//   process.env.NODE_ENV === 'development' &&
+//   !theatre.isInit &&
+//   typeof window !== 'undefined'
+// ) {
+//   studio.initialize()
+//   studio.extend(extension)
+// }
+// const demoSheet = getProject('Demo Project', {state: demoProjectState}).sheet('Demo Sheet')
+
 export default function Home() {
+  // const demoSheet = getProject('Demo Project').sheet('Demo Sheet')
+  const [demoSheet, setDemoSheet] = useState<any>(null)
+  const [scrollContainer, setScrollContainer] = useState<HTMLDivElement | null>()
+
+  useEffect(() => {
+    const demoProject = getProject('Demo Project', { state: demoProjectState })
+    const sheet = demoProject.sheet('Demo Sheet')
+    setDemoSheet(sheet)
+  }, [])
+
+  if (!demoSheet) return null
+
   return (
     <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
+      className={`flex min-h-screen flex-col items-center py-10 lg:p-24 ${inter.className}`}
     >
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/pages/index.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+      <Header el={scrollContainer} />
+      <section className='p-10 px-4'>
+        <div className='absolute w-full h-full top-0 left-0'>
+          <Canvas camera={{}}>
+            <SheetProvider sheet={demoSheet}>
+              <ScrollControls pages={3} damping={0.1}>
+                <Scroll>
+                  <Scene setScrollContainer={setScrollContainer} />
+                </Scroll>
+                <Scroll html>
+                  <TrackedTypedHeading
+                    textClassName='font-bold text-2xl sm:text-5xl'
+                    text='Hi, my name is Daniil.'
+                    className='top-[100vh]'
+                    sentimentelOffset={200}
+                  />
+                  <TrackedTypedHeading
+                    textClassName='font-bold text-2xl sm:text-5xl tracking-wider'
+                    textWrapperClassName='w-[80vw] translate-x-[30px] sm:w-[40vw] sm:translate-x-[240px] sm:translate-y-[100px] bg-black/50 sm:bg-transparent p-3'
+                    text="I'm a front-end developer, 3D Artist and musician based in Lodz."
+                    className='top-[150vh] sm:left-52'
+                    sentimentelOffset={200}
+                  />
+                  <TrackedTypedHeading
+                    text='I have a passion for creating beautiful and functional user experiences.'
+                    className='top-[180vh] '
+                    textClassName='text-2xl sm:text-5xl font-[100]'
+                    textWrapperClassName='w-[80vw] translate-x-[80px] sm:w-[40vw] sm:translate-x-[300px] sm:translate-y-[100px] gap-1'
+                    sentimentelOffset={200}
+
+                  />
+                  <TrackedTypedHeading
+                    small
+                    text='Go checkout other pages to see my projects.'
+                    className='top-[240vh]'
+                    textClassName='text-2xl'
+                    textWrapperClassName='mx-5 justify-center sm:justify-start'
+                    sentimentelOffset={200}
+
+                  />
+                </Scroll>
+              </ScrollControls>
+              <EffectComposer>
+                <Bloom intensity={10} />
+                <Noise premultiply blendFunction={BlendFunction.ADD} />
+              </EffectComposer>
+            </SheetProvider>
+          </Canvas>
         </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      </section>
     </main>
   )
 }
