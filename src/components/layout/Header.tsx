@@ -7,28 +7,56 @@ type Props = {
   el?: HTMLDivElement | null
 }
 
-const Header = ({el}: Props) => {
-  console.dir(el);
-  
+const Header = ({ el }: Props) => {
+  console.dir(el)
+
   return (
     <header className='w-full relative z-40'>
       <nav className='flex justify-between items-center mx-5'>
-        <Link href={'/'} onClick={e=>{e.preventDefault(); if(el)el.scrollTo({top:0, behavior: 'smooth'})}}>
-            <Avatar/>
+        <Link
+          href={'/'}
+          onClick={(e) => {
+            if (el) {
+              e.preventDefault()
+              el.scrollTo({ top: 0, behavior: 'smooth' })
+            }
+          }}
+        >
+          <Avatar />
         </Link>
-        <MobileBurgerMenu/>
+        <MobileBurgerMenu />
         <ul className='hidden lg:flex justify-center items-center gap-5'>
           <li>
-            <Link href={'/about'} className='border-b border-white/0 hover:border-white transition-all pb-2 '>About</Link>
+            <Link
+              href={'/about'}
+              className='border-b border-white/0 hover:border-white transition-all pb-2 '
+            >
+              About
+            </Link>
           </li>
           <li>
-            <Link href={'/articles'} className='border-b border-white/0 hover:border-white transition-all pb-2 '>Articles</Link>
+            <Link
+              href={'/articles'}
+              className='border-b border-white/0 hover:border-white transition-all pb-2 '
+            >
+              Articles
+            </Link>
           </li>
           <li>
-            <Link href={'/projects'} className='border-b border-white/0 hover:border-white transition-all pb-2 '>Projects</Link>
+            <Link
+              href={'/projects'}
+              className='border-b border-white/0 hover:border-white transition-all pb-2 '
+            >
+              Projects
+            </Link>
           </li>
           <li>
-            <Link href={'/uses'} className='border-b border-white/0 hover:border-white transition-all pb-2 '>Uses</Link>
+            <Link
+              href={'/uses'}
+              className='border-b border-white/0 hover:border-white transition-all pb-2 '
+            >
+              Uses
+            </Link>
           </li>
         </ul>
       </nav>

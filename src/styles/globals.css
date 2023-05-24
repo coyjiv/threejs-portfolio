@@ -2,19 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@font-face {
+  font-family: 'Dirtyline';
+  src: url('/Dirtyline36Daysoftype2022-Reg.woff2') format('woff2'),
+      url('/Dirtyline36Daysoftype2022-Reg.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
 }
+
 
 body {
   color: rgb(var(--foreground-rgb));
@@ -29,4 +33,36 @@ body {
 .rotation{
   transform: rotateY(120deg)skewY(10deg);
   left: 25px;
+}
+
+.mask{
+  -webkit-mask-image: url('/overlay1.png');
+  mask-image: url('/overlay1.png');
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  mask-composite:exclude;
+  mask-type: alpha;
+}
+
+.scroll-custom{
+  /* ===== Scrollbar CSS ===== */
+  /* Firefox */
+    scrollbar-width: auto;
+    scrollbar-color: #ffffff #000000;
+
+  
+}
+
+.scroll-custom::-webkit-scrollbar {
+  width: 3px;
+}
+
+.scroll-custom::-webkit-scrollbar-track {
+  background: rgba(21, 0.3, 21, 0.4);
+}
+
+.scroll-custom::-webkit-scrollbar-thumb {
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: 3px solid #ffffff;
 }
