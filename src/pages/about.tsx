@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import Header from '@/components/layout/Header'
 import { Inter } from 'next/font/google'
 import Image from 'next/image'
