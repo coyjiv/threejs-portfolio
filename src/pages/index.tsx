@@ -1,7 +1,7 @@
 import { Inter } from 'next/font/google'
 import Header from '@/components/layout/Header'
 import { Canvas } from '@react-three/fiber'
-import { useEffect, useRef, useState } from 'react'
+import { Suspense, useEffect, useRef, useState } from 'react'
 import { getProject, val } from '@theatre/core'
 import studio from '@theatre/studio'
 import extension from '@theatre/r3f/dist/extension'
@@ -9,6 +9,7 @@ import { editable as e, SheetProvider, useCurrentSheet } from '@theatre/r3f'
 import theatre from '@/theatre'
 import demoProjectState from '@/assets/DemoProject.theatre-project-state1.json'
 import {
+  AdaptiveDpr,
   Scroll,
   ScrollControls,
   useScroll,
@@ -22,6 +23,7 @@ import {
 import { BlendFunction } from 'postprocessing'
 import { TrackedTypedHeading } from '@/components/TrackedTypedHeading'
 import Scene from '@/components/Scene'
+import { Loader } from '@/components/Loader'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -55,51 +57,55 @@ export default function Home() {
       <Header el={scrollContainer} />
       <section className='p-10 px-4'>
         <div className='absolute w-full h-full top-0 left-0'>
-          <Canvas camera={{}}>
-            <SheetProvider sheet={demoSheet}>
-              <ScrollControls pages={3} damping={0.1}>
-                <Scroll>
-                  <Scene setScrollContainer={setScrollContainer} />
-                </Scroll>
-                <Scroll html>
-                  <TrackedTypedHeading
-                    textClassName='font-bold text-2xl sm:text-5xl'
-                    text='Hi, my name is Daniil.'
-                    className='top-[100vh]'
-                    sentimentelOffset={200}
-                  />
-                  <TrackedTypedHeading
-                    textClassName='font-bold text-2xl sm:text-5xl tracking-wider'
-                    textWrapperClassName='w-[80vw] translate-x-[30px] sm:w-[40vw] sm:translate-x-[240px] sm:translate-y-[100px] bg-black/50 sm:bg-transparent p-3'
-                    text="I'm a front-end developer, 3D Artist and musician based in Lodz."
-                    className='top-[150vh] sm:left-52'
-                    sentimentelOffset={200}
-                  />
-                  <TrackedTypedHeading
-                    text='I have a passion for creating beautiful and functional user experiences.'
-                    className='top-[180vh] '
-                    textClassName='text-2xl sm:text-5xl font-[100]'
-                    textWrapperClassName='w-[80vw] translate-x-[80px] sm:w-[40vw] sm:translate-x-[300px] sm:translate-y-[100px] gap-1'
-                    sentimentelOffset={200}
-
-                  />
-                  <TrackedTypedHeading
-                    small
-                    text='Go checkout other pages to see my projects.'
-                    className='top-[240vh]'
-                    textClassName='text-2xl'
-                    textWrapperClassName='mx-5 justify-center sm:justify-start'
-                    sentimentelOffset={200}
-
-                  />
-                </Scroll>
-              </ScrollControls>
-              <EffectComposer>
-                <Bloom intensity={10} />
-                <Noise premultiply blendFunction={BlendFunction.ADD} />
-              </EffectComposer>
-            </SheetProvider>
-          </Canvas>
+          {/* <Suspense fallback={'Loading'}> */}
+            <Canvas camera={{}}>
+              <Loader />
+            <AdaptiveDpr pixelated />
+              <SheetProvider sheet={demoSheet}>
+                <ScrollControls pages={3} damping={0.1}>
+                  <Scroll>
+                    <Scene setScrollContainer={setScrollContainer} />
+                  </Scroll>
+                  <Scroll html>
+                    <TrackedTypedHeading
+                      textClassName='font-bold text-2xl sm:text-5xl'
+                      text='Hi, my name is Daniil.'
+                      className='top-[100vh]'
+                      sentimentelOffset={200}
+                    />
+                    <TrackedTypedHeading
+                      textClassName='font-bold text-2xl sm:text-5xl tracking-wider'
+                      textWrapperClassName='w-[80vw] translate-x-[30px] sm:w-[40vw] sm:translate-x-[240px] sm:translate-y-[100px] bg-black/50 sm:bg-transparent p-3'
+                      text="I'm a front-end developer, 3D Artist and musician based in Lodz."
+                      className='top-[150vh] sm:left-52'
+                      sentimentelOffset={200}
+                    />
+                    <TrackedTypedHeading
+                      text='I have a passion for creating beautiful and functional user experiences.'
+                      className='top-[180vh] '
+                      textClassName='text-2xl sm:text-5xl font-[100]'
+                      textWrapperClassName='w-[80vw] translate-x-[80px] sm:w-[40vw] sm:translate-x-[300px] sm:translate-y-[100px] gap-1'
+                      sentimentelOffset={200}
+  
+                    />
+                    <TrackedTypedHeading
+                      small
+                      text='Go checkout other pages to see my projects.'
+                      className='top-[240vh]'
+                      textClassName='text-2xl'
+                      textWrapperClassName='mx-5 justify-center sm:justify-start'
+                      sentimentelOffset={200}
+  
+                    />
+                  </Scroll>
+                </ScrollControls>
+                <EffectComposer>
+                  <Bloom intensity={10} />
+                  <Noise premultiply blendFunction={BlendFunction.ADD} />
+                </EffectComposer>
+              </SheetProvider>
+            </Canvas>
+          {/* </Suspense> */}
         </div>
       </section>
     </main>
