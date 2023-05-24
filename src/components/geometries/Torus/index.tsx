@@ -1,9 +1,9 @@
 import { useFrame } from "@react-three/fiber"
-import { useRef } from "react"
+import { memo, useRef } from "react"
 import {editable as e} from '@theatre/r3f'
 import { motion } from "framer-motion-3d"
 
-export default function Torus(props: any) {
+ function Torus(props: any) {
     const variants = {
       hidden: { opacity: 0 },
       visible: { opacity: 1 },
@@ -31,3 +31,5 @@ export default function Torus(props: any) {
       </e.mesh>
     )
   }
+
+  export default memo(Torus)

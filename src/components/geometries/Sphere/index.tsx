@@ -1,10 +1,10 @@
 import { useFrame } from "@react-three/fiber"
-import { useRef } from "react"
+import { memo, useRef } from "react"
 import {editable as e} from '@theatre/r3f'
 import { motion } from "framer-motion-3d"
 
 
-export default function Sphere(props: any) {
+ function Sphere(props: any) {
     const mesh = useRef<any>()
     useFrame((state, delta) => (mesh.current.rotation.z += delta * -0.2))
     return (
@@ -15,3 +15,4 @@ export default function Sphere(props: any) {
     )
   }
   
+  export default memo(Sphere)
