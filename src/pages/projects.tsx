@@ -55,7 +55,7 @@ const ProjectsPage = (props: Props) => {
         <p className='max-w-md text-center text-xs'>
           Some of the projects I just can&apos;t show due to FDA, or the
           information is outdated and I have something new in my github, also I
-          am not just "fetching" all my repos directly because it would be a
+          am not just &quot;fetching&quot; all my repos directly because it would be a
           mess, so... <br /> Check my github:{' '}
           <Link className='underline text-xs' href={'https://github.com/coyjiv'}>
             My Github

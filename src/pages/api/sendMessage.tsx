@@ -28,16 +28,16 @@ export default function handler(req: any, res: any) {
         subject: 'New message from portfolio website',
         html: email,
       }
-        sendgrid.send(options).then((response) => {
+        sendgrid.send(options).then((response: any) => {
         console.log(response);
-        }).catch((error) => {
+        }).catch((error: any) => {
         console.error(error);
         })
         
       
         res.status(200).json({ message: 'Message sent' })
     
-    } catch (error) {
+    } catch (error:any) {
       console.error(error)
       res.status(400).json({ message: error.message })
     }
