@@ -1,14 +1,19 @@
 import React from 'react'
 import Link from 'next/link'
 import Avatar from '../Avatar'
-import MobileBurgerMenu from '../MobileBurgerMenu'
+import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router'
+const  MobileBurgerMenu = dynamic(()=> import('../MobileBurgerMenu')) 
 
 type Props = {
   el?: HTMLDivElement | null
 }
 
 const Header = ({ el }: Props) => {
-  console.dir(el)
+  const pathName = useRouter().pathname
+
+  console.log(pathName)
+  
 
   return (
     <header className='w-full relative z-40'>
@@ -29,7 +34,7 @@ const Header = ({ el }: Props) => {
           <li>
             <Link
               href={'/about'}
-              className='border-b border-white/0 hover:border-white transition-all pb-2 '
+              className={`border-b border-white/0 hover:border-white transition-all pb-2 ${pathName === '/about' ? 'border-white' : ''} `}
             >
               About
             </Link>
@@ -37,7 +42,7 @@ const Header = ({ el }: Props) => {
           <li>
             <Link
               href={'/articles'}
-              className='border-b border-white/0 hover:border-white transition-all pb-2 '
+              className={`border-b border-white/0 hover:border-white transition-all pb-2 ${pathName === '/articles' ? 'border-white' : ''} `}
             >
               Articles
             </Link>
@@ -45,17 +50,17 @@ const Header = ({ el }: Props) => {
           <li>
             <Link
               href={'/projects'}
-              className='border-b border-white/0 hover:border-white transition-all pb-2 '
+              className={`border-b border-white/0 hover:border-white transition-all pb-2 ${pathName === '/projects' ? 'border-white' : ''} `}
             >
               Projects
             </Link>
           </li>
           <li>
             <Link
-              href={'/uses'}
-              className='border-b border-white/0 hover:border-white transition-all pb-2 '
+              href={'/contact'}
+              className={`border-b border-white/0 hover:border-white transition-all pb-2 ${pathName === '/contact' ? 'border-white' : ''} `}
             >
-              Uses
+              Contact
             </Link>
           </li>
         </ul>

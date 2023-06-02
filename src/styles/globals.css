@@ -66,3 +66,25 @@ body {
   border-radius: 10px;
   border: 3px solid #ffffff;
 }
+
+.scroll::-webkit-scrollbar{
+  display: none;
+}
+
+@keyframes patternMove {
+  
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0% 95%;
+  }
+}
+
+.pattern{
+  background-image: url('/cross.png');
+  background-size: 25px;
+  will-change: background-position;
+  
+  animation: patternMove 13s linear infinite;
+}

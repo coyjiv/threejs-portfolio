@@ -10,6 +10,9 @@ const MobileBurgerMenu = (props: Props) => {
   const ref = React.useRef(null)
   const [isOpen, setIsOpen] = React.useState(false)
   useOnClickOutside(ref, () => setIsOpen(false))
+  const handleClick = () => {
+    setIsOpen(!isOpen)
+  }
   return (
     <>
       <motion.button
@@ -72,6 +75,7 @@ const MobileBurgerMenu = (props: Props) => {
                   <Link
                     className='border-b border-white/0 hover:border-white transition-all pb-2 '
                     href={'/about'}
+                    onClick={handleClick}
                   >
                     About
                   </Link>
@@ -80,6 +84,7 @@ const MobileBurgerMenu = (props: Props) => {
                   <Link
                     className='border-b border-white/0 hover:border-white transition-all pb-2 '
                     href={'/articles'}
+                    onClick={handleClick}
                   >
                     Articles
                   </Link>
@@ -88,6 +93,7 @@ const MobileBurgerMenu = (props: Props) => {
                   <Link
                     className='border-b border-white/0 hover:border-white transition-all pb-2 '
                     href={'/projects'}
+                    onClick={handleClick}
                   >
                     Projects
                   </Link>
@@ -95,9 +101,10 @@ const MobileBurgerMenu = (props: Props) => {
                 <li className='-skew-y-12 '>
                   <Link
                     className='border-b border-white/0 hover:border-white transition-all pb-2 '
-                    href={'/uses'}
+                    href={'/contact'}
+                    onClick={handleClick}
                   >
-                    Uses
+                    Contact
                   </Link>
                 </li>
               </ul>
