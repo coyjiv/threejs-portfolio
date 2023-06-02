@@ -7,8 +7,8 @@ const ProjectsPage = (props: Props) => {
   return (
     <section className='p-10 flex flex-col items-center '>
       <h1 className='text-3xl sm:text-5xl font-bold font-ds'>Projects</h1>
-        <div className='left-0 md:block absolute pattern h-[80vh] w-5 lg:w-10 lg:-left-32'></div>
-        <div className='right-0 md:block absolute pattern h-[80vh] w-5 lg:w-10 -scale-x-100 lg:-right-32'></div>
+        <div className='left-0 md:block absolute pattern h-[80vh] w-5 lg:w-10 lg:left-32'></div>
+        <div className='right-0 md:block absolute pattern h-[80vh] w-5 lg:w-10 -scale-x-100 lg:right-32'></div>
       <div className='flex flex-col items-center relative'>
         <div className='h-[60vh] overflow-y-scroll scroll-custom flex flex-col gap-10 mt-10 p-3 pb-10'>
           {projects.map((item: any) => (
