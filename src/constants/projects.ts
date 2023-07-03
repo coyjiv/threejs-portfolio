@@ -68,4 +68,31 @@ export const projects = [
     link: 'https://demo-order-app.vercel.app/',
     github: 'https://github.com/coyjiv/demo-order-app',
   },
+  {
+    id: 8,
+    name: 'Orys plumbing solutions',
+    description: "This is a website I made for plumbing services company in Texas. Written with HTML, CSS, JavaScript, Tailwind CSS",
+    link: "https://orysplumbing.netlify.app/",
+    github: "https://github.com/coyjiv/orys-plumbing-solutions",
+  },
+  {
+    id: 9,
+    name: 'Remsvol',
+    description: "This is a website I made for my friend's business.",
+    link: "https://remsvol.netlify.app/",
+    github: "https://github.com/timaantonuk/remsvol-texas",
+  },
+  {
+    id: 10,
+    name: 'Katy\'s plumbing',
+    description: "This is a website I made for plumbing services company in Texas.",
+    link: "https://katysplumbing.netlify.app/",
+    github: "https://github.com/coyjiv/katysplumbing"
+  },
+  {
+    id: 11,
+    name: 'Farloe',
+    description: "The client aimed to revamp their styling web application, which was initially built in Ruby. Their primary goal was to enhance the app’s functionality, improve performance, and fix existing bugs. They wanted to incorporate new features such as a chat system, booking system for styling sessions, and an efficient user account creation and feedback collection mechanism. They also aimed to enhance user experience and engagement on the platform. As a developer, I took the initiative to completely rewrite the application, transitioning it from Ruby to Next.js. I utilized Tailwind CSS for styling, which allowed for a more modern and responsive design. I implemented Redux for state management to ensure smoother user interactions and data flow within the application. To bolster the backend, I integrated Firebase, which streamlined user authentication and data storage processes. I also engineered a real-time chat system, allowing users to communicate effortlessly. To streamline the booking of sessions with stylists, I integrated the app with Calendly. Additionally, I employed Typeform for an efficient user account creation process, and for collecting invaluable feedback, thereby elevating the user onboarding experience.",
+    link: "https://www.farloe.io/",
+  }
 ]
