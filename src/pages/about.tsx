@@ -12,7 +12,7 @@ const AboutPage = () => {
           </div>
         </div>
         <div className='flex flex-col lg:w-1/2'>
-          <h1 className='text-4xl font-bold font-ds text-center mb-5'>
+          <h1 className='text-4xl font-bold font-ds text-center mb-5 text-shadow'>
             About Me
           </h1>
           <div className='h-[400px] px-6  overflow-y-scroll space-y-5 scroll-custom '>

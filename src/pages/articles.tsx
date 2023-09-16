@@ -30,7 +30,7 @@ const ArticlesPage = ({
 
   return isHydrated ? (
     <section className='p-10 flex flex-col items-center '>
-      <h1 className='text-3xl sm:text-5xl font-bold font-ds'>Articles</h1>
+      <h1 className='text-3xl sm:text-5xl font-bold font-ds text-shadow'>Articles</h1>
       <div className='flex flex-col items-center relative'>
         <div className='hidden md:block absolute pattern h-[80vh] w-10 -left-32'></div>
         <div className='hidden lg:block absolute pattern h-[80vh] w-10 -scale-x-100 -right-32'></div>

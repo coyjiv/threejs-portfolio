@@ -36,7 +36,7 @@ const UsesPage = (props: Props) => {
         aria-hidden='true'
       ></div>
       <div className='mx-auto max-w-2xl text-center'>
-        <h2 className='text-3x font-ds font-bold text-white sm:text-4xl'>
+        <h2 className='text-3x font-ds font-bold text-white sm:text-4xl text-shadow'>
           Let&apos;s get in touch
         </h2>
         <p className='mt-5 text-sm sm:text-lg leading-8 text-white'>

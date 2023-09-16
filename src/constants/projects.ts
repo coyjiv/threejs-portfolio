@@ -92,7 +92,18 @@ export const projects = [
   {
     id: 11,
     name: 'Farloe',
-    description: "The client aimed to revamp their styling web application, which was initially built in Ruby. Their primary goal was to enhance the app’s functionality, improve performance, and fix existing bugs. They wanted to incorporate new features such as a chat system, booking system for styling sessions, and an efficient user account creation and feedback collection mechanism. They also aimed to enhance user experience and engagement on the platform. As a developer, I took the initiative to completely rewrite the application, transitioning it from Ruby to Next.js. I utilized Tailwind CSS for styling, which allowed for a more modern and responsive design. I implemented Redux for state management to ensure smoother user interactions and data flow within the application. To bolster the backend, I integrated Firebase, which streamlined user authentication and data storage processes. I also engineered a real-time chat system, allowing users to communicate effortlessly. To streamline the booking of sessions with stylists, I integrated the app with Calendly. Additionally, I employed Typeform for an efficient user account creation process, and for collecting invaluable feedback, thereby elevating the user onboarding experience.",
+    description: "The client aimed to revamp their styling web application, which was initially built in Ruby. Their primary goal was to enhance the app’s functionality, improve performance, and fix existing bugs. They wanted to incorporate new features such as a chat system, booking system for styling sessions, and an efficient user account creation and feedback collection mechanism. They also aimed to enhance user experience and engagement on the platform. As a developer, I took the initiative to completely rewrite the application, transitioning it from Ruby to Next.js. I utilized Tailwind CSS for styling, which allowed for a more modern and responsive design. I implemented Redux for state management to ensure smoother user interactions and data flow within the application. To bolster the backend, I integrated Firebase, which streamlined user authentication and data storage processes. I also engineered a real-time chat system, allowing users to communicate effortlessly. To streamline the booking of sessions with stylists, I integrated the app with Calendly. Additionally, I've added Typeform for an efficient user account creation process, and for collecting invaluable feedback, thereby elevating the user onboarding experience.",
     link: "https://www.farloe.io/",
   }
 ]
+
+export interface Project {
+  id: number
+  name: string
+  description: string
+  image?: string
+  link?: string
+  github?: string
+  tags?: string[]
+  category?: string
+}

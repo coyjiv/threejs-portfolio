@@ -3,8 +3,14 @@ import { memo, useRef } from "react"
 import {editable as e} from '@theatre/r3f'
 import { motion } from "framer-motion-3d"
 
+interface EditableMeshProps {
+    position: [number, number, number]
+    rotation: [number, number, number]
+    scale: [number, number, number]
+  }
 
- function Sphere(props: any) {
+
+ function Sphere(props: EditableMeshProps) {
     const mesh = useRef<any>()
     useFrame((state, delta) => (mesh.current.rotation.z += delta * -0.2))
     return (
