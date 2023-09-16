@@ -38,7 +38,7 @@ export default function Scene(props: any) {
         <e.pointLight theatreKey='Light' position={[10, 10, 10]} />
         <Torus position={[-1.2, 0, 0]} />
         <Torus position={[-1.2, 0, 0]} theatreKey={'nimb'} roundAnimation />
-        {/* <Sphere /> */}
+        <Sphere />
         <e.pointLight theatreKey='addLight' position={[10, 10, 10]} />
         <e.group theatreKey='model'>
           <Gltf src='/nastka1.gltf' castShadow receiveShadow />

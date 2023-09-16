@@ -10,7 +10,7 @@ interface EditableMeshProps {
   }
 
 
- function Sphere(props: EditableMeshProps) {
+ function Sphere(props: any) {
     const mesh = useRef<any>()
     useFrame((state, delta) => (mesh.current.rotation.z += delta * -0.2))
     return (
