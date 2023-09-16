@@ -98,7 +98,7 @@ const MobileBurgerMenu = (props: Props) => {
                     Projects
                   </Link>
                 </li>
-                <li className='-skew-y-12 '>
+                {/* <li className='-skew-y-12 '>
                   <Link
                     className='border-b border-white/0 hover:border-white transition-all pb-2 '
                     href={'/contact'}
@@ -106,7 +106,7 @@ const MobileBurgerMenu = (props: Props) => {
                   >
                     Contact
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </motion.nav>
           </>

@@ -12,7 +12,7 @@ type Props = {
 const Header = ({ el }: Props) => {
   const pathName = useRouter().pathname
 
-  console.log(pathName)
+  // console.log(pathName)
   
 
   return (
@@ -55,14 +55,14 @@ const Header = ({ el }: Props) => {
               Projects
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link
               href={'/contact'}
               className={`border-b border-white/0 hover:border-white transition-all pb-2 ${pathName === '/contact' ? 'border-white' : ''} `}
             >
               Contact
             </Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </header>
