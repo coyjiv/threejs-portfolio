@@ -23,7 +23,7 @@ export default function handler(req: any, res: any) {
             console.log(values)
       const email = emailHtml(values)
       const options = {
-        from: 'djdaniil46@gmail.com',
+        from: 'dshcheerbakov@gmail.com',
         to: 'djdaniil46@gmail.com',
         subject: 'New message from portfolio website',
         html: email,
