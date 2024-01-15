@@ -11,6 +11,9 @@ module.exports = {
         sans: ['Inter', 'sans-serif'],
         ds: ['Dirtyline', 'monospace'],
       },
+      screens: {
+        xs: '350px',
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':

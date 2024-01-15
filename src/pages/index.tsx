@@ -37,8 +37,8 @@ import MainContainer from '@/components/layout/MainContainer'
 
 export default function Home() {
   // const demoSheet = getProject('Demo Project').sheet('Demo Sheet')
-  const [demoSheet, setDemoSheet] = useState<any>(null)
-  const [scrollContainer, setScrollContainer] = useState<HTMLDivElement | null>()
+  const [ demoSheet, setDemoSheet ] = useState<any>(null)
+  const [ scrollContainer, setScrollContainer ] = useState<HTMLDivElement | null>()
 
   useEffect(() => {
     const demoProject = getProject('Demo Project', { state: demoProjectState })
@@ -49,59 +49,59 @@ export default function Home() {
   if (!demoSheet) return null
 
   return (
-        <section className='p-10 px-4'>
-          <div className='absolute w-full  h-full  top-0 left-0'>
-            {/* <Suspense fallback={'Loading'}> */}
-              <Canvas camera={{}}>
-                <Loader />
-              <AdaptiveDpr pixelated />
-                <SheetProvider sheet={demoSheet}>
-                  <ScrollControls pages={3} damping={0.1}>
-                    <Scroll>
-                      <Scene setScrollContainer={setScrollContainer} />
-                    </Scroll>
-                    <Scroll html>
-                      <TrackedTypedHeading
-                        textClassName='font-bold text-2xl sm:text-5xl'
-                        text='Hi, my name is Daniil.'
-                        className='top-[100vh]'
-                        sentimentelOffset={200}
-                      />
-                      <TrackedTypedHeading
-                        textClassName='font-bold text-2xl sm:text-5xl tracking-wider'
-                        textWrapperClassName='w-[80vw] translate-x-[30px] sm:w-[40vw] sm:translate-x-[240px] sm:translate-y-[100px] bg-black/50 sm:bg-transparent p-3'
-                        text="I'm a front-end developer, 3D Artist and musician based in Lodz."
-                        className='top-[150vh] sm:left-52'
-                        sentimentelOffset={200}
-                      />
-                      <TrackedTypedHeading
-                        text='I have a passion for creating beautiful and functional user experiences.'
-                        className='top-[185vh] sm:top-[180vh] '
-                        textClassName='text-xl sm:text-5xl font-[100]'
-                        textWrapperClassName='w-[80vw] translate-x-[60px] sm:w-[40vw] sm:translate-x-[300px] sm:translate-y-[100px] gap-1'
-                        sentimentelOffset={200}
-    
-                      />
-                      <TrackedTypedHeading
-                        small
-                        text='If you want to know more, check the other pages'
-                        className='top-[240vh]'
-                        textClassName='text-2xl'
-                        textWrapperClassName='mx-5 font-ds justify-center sm:justify-start'
-                        sentimentelOffset={200}
-    
-                      />
-                    </Scroll>
-                  </ScrollControls>
-                  <EffectComposer>
-                    <Bloom intensity={10} />
-                    <Noise premultiply blendFunction={BlendFunction.ADD} />
-                  </EffectComposer>
-                </SheetProvider>
-              </Canvas>
-            {/* </Suspense> */}
-          </div>
-        </section>
+    <section className='p-10 px-4'>
+      <div className='absolute w-full  h-full  top-0 left-0'>
+        {/* <Suspense fallback={'Loading'}> */}
+        <Canvas camera={{}}>
+          <Loader />
+          <AdaptiveDpr pixelated />
+          <SheetProvider sheet={demoSheet}>
+            <ScrollControls pages={3} damping={0.1}>
+              <Scroll>
+                <Scene setScrollContainer={setScrollContainer} />
+              </Scroll>
+              <Scroll html>
+                <TrackedTypedHeading
+                  textClassName='font-bold text-lg sm:text-5xl'
+                  text='Hi, my name is Daniil.'
+                  className='top-[100vh]'
+                  sentimentelOffset={200}
+                />
+                <TrackedTypedHeading
+                  textClassName='font-bold text-base xs:text-lg sm:text-5xl tracking-wider'
+                  textWrapperClassName='w-[80vw] translate-x-[30px] sm:w-[40vw] sm:translate-x-[240px] sm:translate-y-[100px] bg-black/50 sm:bg-transparent p-3'
+                  text="I'm a front-end developer, 3D Artist and musician based in Lund."
+                  className='top-[150vh] sm:left-52'
+                  sentimentelOffset={200}
+                />
+                <TrackedTypedHeading
+                  text='I have a passion for creating beautiful and functional user experiences.'
+                  className='top-[185vh] sm:top-[180vh] '
+                  textClassName='text-base xs:text-lg sm:text-5xl font-[100]'
+                  textWrapperClassName='w-[80vw] xs:translate-x-0 sm:w-[40vw] sm:translate-x-[300px] sm:translate-y-[100px] gap-1'
+                  sentimentelOffset={200}
+
+                />
+                <TrackedTypedHeading
+                  small
+                  text='If you want to know more, check the other pages'
+                  className='top-[240vh]'
+                  textClassName='text-2xl'
+                  textWrapperClassName='mx-5 font-ds justify-center sm:justify-start'
+                  sentimentelOffset={200}
+
+                />
+              </Scroll>
+            </ScrollControls>
+            <EffectComposer>
+              <Bloom intensity={10} />
+              <Noise premultiply blendFunction={BlendFunction.ADD} />
+            </EffectComposer>
+          </SheetProvider>
+        </Canvas>
+        {/* </Suspense> */}
+      </div>
+    </section>
 
   )
 }
